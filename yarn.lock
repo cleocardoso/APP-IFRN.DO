@@ -954,6 +954,11 @@
   dependencies:
     deep-assign "^3.0.0"
 
+"@react-native-community/checkbox@^0.5.8":
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/@react-native-community/checkbox/-/checkbox-0.5.8.tgz#a1b50635fd76a07fb53eb4a98120347cb6e75da4"
+  integrity sha512-2ppw40sSqBKSPz75l8rDCvpcvQb/78MtvB5BDtovsJE1kXoUJP4eVLuyLo+LfYdSK9qLD4Llt4bIulr1SI9UIQ==
+
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1.tgz#6b1f3367b8e5211e899983065ea2e72c1901d75f"
@@ -1117,7 +1122,7 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-1.0.0.tgz#05bb0031533598f9458cf65a502b8df0eecae780"
   integrity sha512-0jbp4RxjYopTsIdLl+/Fy2TiwVYHy4mgeu07DG4b/LyM0OS/+lPP5c9sbnt/AMlnF6qz2JRZpPpGw1eMNS6A4w==
 
-"@react-navigation/core@^5.15.3":
+"@react-navigation/core@5.15.3", "@react-navigation/core@^5.15.3":
   version "5.15.3"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.15.3.tgz#dce7090bf3ea0d302993d742c706825e495b812e"
   integrity sha512-3ZdyDInh8qg1kygCNkmh9lFgpDf29lTvPsaMe2mm/qvmxLKSgttWBz07P2fc181aV9jTdgQpzYfWZ5KWT036zw==
@@ -1128,7 +1133,7 @@
     query-string "^6.13.6"
     react-is "^16.13.0"
 
-"@react-navigation/native@^5.9.4":
+"@react-navigation/native@5.9.4":
   version "5.9.4"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.9.4.tgz#414c044423c58aa1cdde1b6494309e0b51da08b8"
   integrity sha512-BUCrOXfZDdKWBqM8OhOKQhCX5we4HUo5XG6tCQtVqQAep+7UcApZmMUuemUXDxVe8NPESUpoUlB0RaEpyIdfTQ==
@@ -5259,7 +5264,7 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5318,6 +5323,13 @@ react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-native-check-box@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-check-box/-/react-native-check-box-2.1.7.tgz#f349d3505a13c15d19949ec4cec40c7adc4f3626"
+  integrity sha512-dPVOoz4jKs2je2HSHp7+XJXNyZFq8Kij7IHutigrQKzB550Dko6ZAQu/1mG1FzdUMFxxkZ2nX59KmbR0Co0T8Q==
+  dependencies:
+    prop-types "^15.5.7"
 
 react-native-codegen@^0.0.6:
   version "0.0.6"
