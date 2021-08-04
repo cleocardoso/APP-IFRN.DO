@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, Alert, Image, View, FlatList, Keyboard, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Text, Alert, View, FlatList, Keyboard, ScrollView } from 'react-native';
 import { Inputhome } from '../components/Inputhome';
-import api from '../services/Api';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ItemTarefa from '../components/ItemTarefa';
 
+
+
+
 export function Home({ navigation, route }) {
     //console.log(route.params)
-    const keyAsyncStorage = "@agenda1:contatos";
-
+    const keyAsyncStorage = "@IFRNDO:tarefas1";
 
     const [tarefas, setTarefas] = useState([]);
     const [tarefa, setTarefa] = useState('');
-
+    const [count, setCount] = useState(0);
+    const [check, setCheck] = useState(false)
 
     async function clear() {
         await AsyncStorage.clear();
@@ -21,13 +24,15 @@ export function Home({ navigation, route }) {
     async function salvarTarefa() {
         const data = {
             id: String(new Date().getTime()),
-            tarefa: tarefa
+            tarefa: tarefa,
+            checked: false
         }
         const vetData = [...tarefas, data]
+      
         try {
             await AsyncStorage.setItem(keyAsyncStorage, JSON.stringify(vetData));
         } catch (error) {
-            Alert.alert("Erro ao salvar contatos");
+            Alert.alert("Erro ao salvar Tarefas");
         }
 
         Keyboard.dismiss();
@@ -39,8 +44,19 @@ export function Home({ navigation, route }) {
     async function deletar(id) {
         const newData = tarefas.filter(item => item.id != id);
         await AsyncStorage.setItem(keyAsyncStorage, JSON.stringify(newData));
+      
+        await loadData();
+    }
 
-        //setContacts(newData); 
+    async function setChecked(index){
+        let item = tarefas[index];
+        item = {
+            ...item,
+            checked: !item.checked
+        } 
+        tarefas[index] = item
+        console.log('item', item)
+        await AsyncStorage.setItem(keyAsyncStorage, JSON.stringify(tarefas));
         await loadData()
     }
 
@@ -48,7 +64,7 @@ export function Home({ navigation, route }) {
         try {
             const retorno = await AsyncStorage.getItem(keyAsyncStorage);
             const dadosTarefas = await JSON.parse(retorno)
-            console.log('loadData -> ', dadosTarefas);
+            //console.log('loadData -> ', dadosTarefas);
             setTarefas(dadosTarefas || []);
         } catch (error) {
             Alert.alert("Erro na leitura  das tarefasss");
@@ -56,25 +72,32 @@ export function Home({ navigation, route }) {
     }
 
     useEffect(() => {
-        // clear()
+        //clear()/
         loadData();
     }, []);
+
+
+
     return (
 
         <View style={styles.screenContainer}>
             <View style={styles.container}>
                 <Text style={styles.title}>IFRN.DO </Text>
-                <Text style={styles.title1}>Você tem</Text><Text style={styles.title3}> 2 tarefas </Text>
+                <Text style={styles.title1}>Você tem</Text><Text style={styles.title3}> {tarefas.length} tarefas </Text>
                 <Inputhome placeholder="Adicionar Tarefa" value={tarefa}
                     onChangeText={(e) => setTarefa(e)} onPress={salvarTarefa} />
             </View>
             <View style={styles.list}>
                 <ScrollView>
+
                     <FlatList data={tarefas}
                         keyExtractor={item => item.id}
-                        renderItem={({ item }) => (
-                            <ItemTarefa tarefa={item.tarefa} apagar={() => deletar(item.id)} />
+                        renderItem={({ item, index }) => (
+                            <ItemTarefa tarefa={item.tarefa} onChecked={() => setChecked(index)} checked={item.checked} apagar={() => deletar(item.id)} >
+
+                            </ItemTarefa>
                         )}
+
                     />
                 </ScrollView>
             </View>
@@ -85,7 +108,7 @@ export function Home({ navigation, route }) {
 
 const styles = StyleSheet.create({
     screenContainer: {
-        flex: 1, 
+        flex: 1,
     },
     container: {
         width: 400,

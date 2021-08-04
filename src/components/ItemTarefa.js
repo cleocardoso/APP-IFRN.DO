@@ -3,18 +3,16 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 
-import CheckBox from '@react-native-community/checkbox';
+import CheckBoxS from '@react-native-community/checkbox';
+import CheckBox from '../components/CheckBox';
+
 
 export default function ItemTarefa(props) {
-  console.log(props)
+ 
   return (
     <View style={styles.container}>
       <View style={styles.checkboxContainer}>
-        <CheckBox
-          value={true}
-          onValueChange={() => {}}
-          style={styles.checkbox}
-        />
+        <CheckBox onPress={props.onChecked} isChecked={props.checked}/>
       </View>
       <View>
         <Text style={styles.textTarefa}>{props.tarefa}</Text>
@@ -29,9 +27,10 @@ export default function ItemTarefa(props) {
 
 const styles = StyleSheet.create({
   container: {
-    width: 340,
+    width: 360,
     height: 65,
     top: 10,
+    left:-1,
     padding: 10,
     bottom: 0,
     flexDirection: 'row',
@@ -40,13 +39,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#F4F4F4',
     borderWidth: 1,
     borderColor: '#B6B4B4',
-    borderRadius: 5,
-    margin: 10,
+    margin: -1,
     flex: 1,
   },
   textTarefa: {
     fontSize: 18,
-    fontWeight: 'bold'
+    left:-80,
+    
+    
   },
   IconStyle: {
     left: 10,
@@ -56,9 +56,14 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     marginBottom: 20,
+    top:10,
+    color:'#1DB863',
+    
   },
   checkbox: {
     alignSelf: "center",
+    color:'#1DB863',
+    
   },
 
 })

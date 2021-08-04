@@ -10,7 +10,7 @@ export function Inputhome({placeholder,onPress,onChangeText}) {
         onChangeText={onChangeText}
       />
       <TouchableOpacity style={styles.button} onPress={onPress}>
-         <AntDesign name="right" size={20} />
+         <AntDesign name="right" size={20} color='#666666'/>
       </TouchableOpacity>
     </View>
   );
@@ -34,11 +34,12 @@ const styles = StyleSheet.create({
       backgroundColor: '#FFFFFF',
       paddingLeft: 20,
       fontSize: 17,
+      borderRadius: 5,
       
     },
     button:{
       padding: 15,
       backgroundColor: '#FFFFFF',
-      borderLeftWidth:1,
+      
     }
 });

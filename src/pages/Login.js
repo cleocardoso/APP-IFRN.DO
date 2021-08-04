@@ -29,10 +29,10 @@ export function Login({ navigation }) {
         }
       });
       const { data} = responseUser
-      console.log("DADOS -->", data);
+      //console.log("DADOS -->", data);
       navigation.navigate('Home', { user: data});
     } catch (e) {
-      console.log(e);
+     // console.log(e);
       Alert.alert("Erro na autenticação");
     }
 

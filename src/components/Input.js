@@ -1,14 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput,TouchableOpacity} from 'react-native';
-import GlobalStyles from '../styles/GlobalStyles';
 
-import AntDesign from 'react-native-vector-icons/AntDesign'; 
 
-export function Input({placeholder,onPress,onChangeText}) {
+export function Input({placeholder,onPress,onChangeText, ...rest}) {
   return (
     <View style={ styles.container}>
       <TextInput style={styles.inputText} placeholder={placeholder}
-        
+        {...rest}
         onChangeText={onChangeText}
       />
       
