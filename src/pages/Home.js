@@ -93,7 +93,7 @@ export function Home({ navigation, route }) {
                     <FlatList data={tarefas}
                         keyExtractor={item => item.id}
                         renderItem={({ item, index }) => (
-                            <ItemTarefa tarefa={item.tarefa} onChecked={() => setChecked(index)} checked={item.checked} apagar={() => deletar(item.id)} >
+                            <ItemTarefa status={item.status} tarefa={item.tarefa} onChecked={() => setChecked(index)} checked={item.checked} apagar={() => deletar(item.id)} >
 
                             </ItemTarefa>
                         )}
